@@ -1,5 +1,6 @@
 package com.elleined.image_server_api.model.image;
 
+import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
@@ -7,6 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+@Cacheable
+@org.hibernate.annotations.Cache(region = "activeImageCache", usage = CacheConcurrencyStrategy.READ_WRITE)
 
 @Entity
 @Table(

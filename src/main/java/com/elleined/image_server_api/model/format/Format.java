@@ -2,14 +2,15 @@ package com.elleined.image_server_api.model.format;
 
 
 import com.elleined.image_server_api.model.PrimaryKeyIdentity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Index;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+@Cacheable
+@org.hibernate.annotations.Cache(region = "formatCache", usage = CacheConcurrencyStrategy.READ_WRITE)
 
 @Entity
 @Table(
